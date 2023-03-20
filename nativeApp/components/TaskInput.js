@@ -1,7 +1,48 @@
-import React from "react";
+import { useState } from "react";
+import { StyleSheet, View, Button, TextInput } from "react-native";
 
-const TaskInput = () => {
-  return <div>TaskInput</div>;
+const TaskInput = ({ addHandler }) => {
+  const [text, setText] = useState("");
+
+  const inputHandler = (enteredText) => {
+    setText(enteredText);
+  };
+
+  const addGoalHandler = () => {
+    addHandler(text);
+    setText("");
+  };
+
+  return (
+    <View style={styles.addItem}>
+      <TextInput
+        style={styles.inputText}
+        placeholder='I have to...'
+        onChangeText={inputHandler}
+        value={text}
+      />
+      <Button title='Add' onPress={addGoalHandler} />
+    </View>
+  );
 };
+
+const styles = StyleSheet.create({
+  addItem: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginBottom: 24,
+    borderBottomColor: "lightblue",
+    borderBottomWidth: 1,
+  },
+  inputText: {
+    borderWidth: 1,
+    borderColor: "#fdd",
+    width: "80%",
+    marginRight: 8,
+    padding: 8,
+  },
+});
 
 export default TaskInput;
