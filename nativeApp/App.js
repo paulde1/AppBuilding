@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button, TextInput } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  FlatList,
+} from "react-native";
 
 export default function App() {
   const [text, setText] = useState("");
@@ -27,8 +34,7 @@ export default function App() {
       <View style={styles.items}>
         <Text> Things I need to do ... </Text>
         {tasks.map((task, index) => (
-          <Text key={index}>
-            {" "}
+          <Text style={styles.item} key={index}>
             Task number {index + 1}: {task}
           </Text>
         ))}
@@ -61,5 +67,12 @@ const styles = StyleSheet.create({
   },
   items: {
     flex: 5,
+  },
+  item: {
+    margin: 7,
+    padding: 7,
+    borderRadius: 5,
+    backgroundColor: "lightgrey",
+    color: "red",
   },
 });
