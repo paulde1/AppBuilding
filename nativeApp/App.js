@@ -26,7 +26,12 @@ export default function App() {
       </View>
       <View style={styles.items}>
         <Text> Things I need to do ... </Text>
-        {/* tasks?.map((task) => {<Text>{task}</Text>} */}
+        {tasks.map((task, index) => (
+          <Text key={index}>
+            {" "}
+            Task number {index + 1}: {task}
+          </Text>
+        ))}
       </View>
     </View>
   );
