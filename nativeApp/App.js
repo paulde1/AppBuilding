@@ -37,9 +37,7 @@ export default function App() {
         <FlatList
           data={tasks}
           renderItem={({ item, index }) => {
-            return (
-            <TaskItems props = { item, index }            
-            );
+            return <TaskItems item={item} index={index} />;
           }}
         />
       </View>
