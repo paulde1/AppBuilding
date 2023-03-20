@@ -12,9 +12,6 @@ const TaskItems = ({ item, index }) => {
 };
 
 const styles = StyleSheet.create({
-  items: {
-    flex: 5,
-  },
   item: {
     margin: 7,
     padding: 7,

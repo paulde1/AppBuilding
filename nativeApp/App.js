@@ -15,20 +15,12 @@ export default function App() {
   const [tasks, setTasks] = useState([]);
 
   const addHandler = (text) => {
-    setTasks((tasks) => [...tasks, text]);
+    setTasks((task) => [...task, text]);
   };
 
   return (
     <View style={styles.appContainer}>
       <TaskInput addHandler={addHandler} />
-      {/* <View style={styles.addItem}>
-        <TextInput
-          style={styles.inputText}
-          placeholder='I have to...'
-          onChangeText={inputHandler}
-        />
-        <Button title='Add' onPress={addHandler} />
-      </View> */}
       <View style={styles.items}>
         <Text> Things I need to do ... </Text>
         <FlatList
@@ -43,9 +35,12 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  items: {
+    flex: 5,
+  },
   appContainer: {
     flex: 1,
-    padding: 65,
-    paddingHorizontal: 16,
+    padding: 20,
+    paddingHorizontal: 10,
   },
 });
