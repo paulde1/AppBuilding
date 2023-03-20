@@ -34,9 +34,11 @@ export default function App() {
       <View style={styles.items}>
         <Text> Things I need to do ... </Text>
         {tasks.map((task, index) => (
-          <Text style={styles.item} key={index}>
-            Task number {index + 1}: {task}
-          </Text>
+          <View style={styles.item} key={index}>
+            <Text style={styles.itemText}>
+              Task number {index + 1}: {task}
+            </Text>
+          </View>
         ))}
       </View>
     </View>
@@ -55,7 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 24,
-    borderBottomColor: "lightBlue",
+    borderBottomColor: "lightblue",
     borderBottomWidth: 1,
   },
   inputText: {
@@ -73,6 +75,9 @@ const styles = StyleSheet.create({
     padding: 7,
     borderRadius: 5,
     backgroundColor: "lightgrey",
+    color: "red",
+  },
+  itemText: {
     color: "red",
   },
 });
