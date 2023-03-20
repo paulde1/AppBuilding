@@ -7,6 +7,7 @@ import {
   Button,
   TextInput,
   ScrollView,
+  FlatList,
 } from "react-native";
 
 export default function App() {
@@ -33,15 +34,18 @@ export default function App() {
       </View>
       <View style={styles.items}>
         <Text> Things I need to do ... </Text>
-        <ScrollView>
-          {tasks.map((task, index) => (
-            <View style={styles.item} key={index}>
-              <Text style={styles.itemText}>
-                Task number {index + 1}: {task}
-              </Text>
-            </View>
-          ))}
-        </ScrollView>
+        <FlatList
+          data={tasks}
+          renderItem={({ item, index }) => {
+            return (
+              <View style={styles.item}>
+                <Text style={styles.itemText}>
+                  Task number {index + 1}: {item}
+                </Text>
+              </View>
+            );
+          }}
+        />
       </View>
     </View>
   );
