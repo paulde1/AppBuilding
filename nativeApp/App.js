@@ -8,6 +8,7 @@ import {
   TextInput,
   FlatList,
 } from "react-native";
+import TaskItems from "./components/TaskItems";
 
 export default function App() {
   const [text, setText] = useState("");
@@ -37,11 +38,7 @@ export default function App() {
           data={tasks}
           renderItem={({ item, index }) => {
             return (
-              <View style={styles.item}>
-                <Text style={styles.itemText}>
-                  Task number {index + 1}: {item}
-                </Text>
-              </View>
+            <TaskItems props = { item, index }            
             );
           }}
         />
@@ -71,18 +68,5 @@ const styles = StyleSheet.create({
     width: "80%",
     marginRight: 8,
     padding: 8,
-  },
-  items: {
-    flex: 5,
-  },
-  item: {
-    margin: 7,
-    padding: 7,
-    borderRadius: 5,
-    backgroundColor: "lightgrey",
-    color: "red",
-  },
-  itemText: {
-    color: "red",
   },
 });
