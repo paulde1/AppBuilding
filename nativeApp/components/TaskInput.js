@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, View, Button, TextInput, Modal } from "react-native";
 
-const TaskInput = ({ addHandler }) => {
+const TaskInput = ({ addHandler, visible, cancelGoalHandler }) => {
   const [text, setText] = useState("");
 
   const inputHandler = (enteredText) => {
@@ -14,7 +14,7 @@ const TaskInput = ({ addHandler }) => {
   };
 
   return (
-    <Modal>
+    <Modal visible={visible} animationType='slide'>
       <View style={styles.addItem}>
         <TextInput
           style={styles.inputText}
@@ -22,7 +22,10 @@ const TaskInput = ({ addHandler }) => {
           onChangeText={inputHandler}
           value={text}
         />
-        <Button title='Add' onPress={addGoalHandler} />
+        <View>
+          <Button title='Add' onPress={addGoalHandler} />
+          <Button title='Cancel' onPress={cancelGoalHandler} />
+        </View>
       </View>
     </Modal>
   );

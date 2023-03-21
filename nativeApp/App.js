@@ -18,6 +18,11 @@ export default function App() {
   const changeModalView = () => {
     setVisibleModal(true);
   };
+
+  const cancelGoalHandler = () => {
+    setVisibleModal(false);
+  };
+
   const addHandler = (entered) => {
     setTasks((task) => [
       ...task,
@@ -34,7 +39,13 @@ export default function App() {
   return (
     <View style={styles.appContainer}>
       <Button title='Add new task' color='crimson' onPress={changeModalView} />
-      {visibleModal && <TaskInput addHandler={addHandler} />}
+      {visibleModal && (
+        <TaskInput
+          visible={visibleModal}
+          addHandler={addHandler}
+          cancelGoalHandler={cancelGoalHandler}
+        />
+      )}
       <View style={styles.items}>
         <Text> Things I need to do ... </Text>
         <FlatList
@@ -65,6 +76,7 @@ const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
     padding: 20,
+    paddingTop: 250,
     paddingHorizontal: 10,
   },
 });
