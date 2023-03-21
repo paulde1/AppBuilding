@@ -19,7 +19,7 @@ export default function App() {
     setVisibleModal(true);
   };
 
-  const cancelGoalHandler = () => {
+  const hideGoalHandler = () => {
     setVisibleModal(false);
   };
 
@@ -28,6 +28,7 @@ export default function App() {
       ...task,
       { text: entered, id: Math.random().toString() },
     ]);
+    hideGoalHandler();
   };
 
   const deleteTask = (id) => {
@@ -43,7 +44,7 @@ export default function App() {
         <TaskInput
           visible={visibleModal}
           addHandler={addHandler}
-          cancelGoalHandler={cancelGoalHandler}
+          hideGoalHandler={hideGoalHandler}
         />
       )}
       <View style={styles.items}>

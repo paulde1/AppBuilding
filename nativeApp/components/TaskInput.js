@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, View, Button, TextInput, Modal } from "react-native";
 
-const TaskInput = ({ addHandler, visible, cancelGoalHandler }) => {
+const TaskInput = ({ addHandler, visible, hideGoalHandler }) => {
   const [text, setText] = useState("");
 
   const inputHandler = (enteredText) => {
@@ -23,8 +23,12 @@ const TaskInput = ({ addHandler, visible, cancelGoalHandler }) => {
           value={text}
         />
         <View style={styles.ButtonContainer}>
-          <Button title='Add' onPress={addGoalHandler} />
-          <Button title='Hide' onPress={cancelGoalHandler} />
+          <View style={styles.buttonStyles}>
+            <Button title='Add' onPress={addGoalHandler} />
+          </View>
+          <View>
+            <Button title='Cancel' onPress={hideGoalHandler} />
+          </View>
         </View>
       </View>
     </Modal>
@@ -39,16 +43,20 @@ const styles = StyleSheet.create({
     marginBottom: 6,
     borderBottomColor: "lightblue",
     borderBottomWidth: 1,
+    padding: 16,
   },
   inputText: {
     borderWidth: 1,
     borderColor: "#fdd",
-    width: "80%",
-    marginRight: 8,
-    padding: 8,
+    width: "100%",
   },
   ButtonContainer: {
+    marginTop: 10,
     flexDirection: "row",
+  },
+  buttonStyles: {
+    width: 100,
+    marginHorizontal: 8,
   },
 });
 
