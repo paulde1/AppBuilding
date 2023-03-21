@@ -22,9 +22,9 @@ const TaskInput = ({ addHandler, visible, cancelGoalHandler }) => {
           onChangeText={inputHandler}
           value={text}
         />
-        <View>
+        <View style={styles.ButtonContainer}>
           <Button title='Add' onPress={addGoalHandler} />
-          <Button title='Cancel' onPress={cancelGoalHandler} />
+          <Button title='Hide' onPress={cancelGoalHandler} />
         </View>
       </View>
     </Modal>
@@ -34,8 +34,7 @@ const TaskInput = ({ addHandler, visible, cancelGoalHandler }) => {
 const styles = StyleSheet.create({
   addItem: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     marginBottom: 6,
     borderBottomColor: "lightblue",
@@ -47,6 +46,9 @@ const styles = StyleSheet.create({
     width: "80%",
     marginRight: 8,
     padding: 8,
+  },
+  ButtonContainer: {
+    flexDirection: "row",
   },
 });
 
