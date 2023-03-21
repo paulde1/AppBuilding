@@ -13,7 +13,11 @@ import TaskInput from "./components/TaskInput";
 
 export default function App() {
   const [tasks, setTasks] = useState([]);
+  const [visibleModal, setVisibleModal] = useState(false);
 
+  const changeModalView = () => {
+    setVisibleModal(true);
+  };
   const addHandler = (entered) => {
     setTasks((task) => [
       ...task,
@@ -29,7 +33,8 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <TaskInput addHandler={addHandler} />
+      <Button title='Add new task' color='crimson' onPress={changeModalView} />
+      {visibleModal && <TaskInput addHandler={addHandler} />}
       <View style={styles.items}>
         <Text> Things I need to do ... </Text>
         <FlatList

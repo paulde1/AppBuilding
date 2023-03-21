@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { StyleSheet, View, Button, TextInput } from "react-native";
+import { StyleSheet, View, Button, TextInput, Modal } from "react-native";
 
 const TaskInput = ({ addHandler }) => {
   const [text, setText] = useState("");
@@ -14,15 +14,17 @@ const TaskInput = ({ addHandler }) => {
   };
 
   return (
-    <View style={styles.addItem}>
-      <TextInput
-        style={styles.inputText}
-        placeholder='I have to...'
-        onChangeText={inputHandler}
-        value={text}
-      />
-      <Button title='Add' onPress={addGoalHandler} />
-    </View>
+    <Modal>
+      <View style={styles.addItem}>
+        <TextInput
+          style={styles.inputText}
+          placeholder='I have to...'
+          onChangeText={inputHandler}
+          value={text}
+        />
+        <Button title='Add' onPress={addGoalHandler} />
+      </View>
+    </Modal>
   );
 };
 
