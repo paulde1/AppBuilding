@@ -14,8 +14,17 @@ import TaskInput from "./components/TaskInput";
 export default function App() {
   const [tasks, setTasks] = useState([]);
 
-  const addHandler = (text) => {
-    setTasks((task) => [...task, text]);
+  const addHandler = (entered) => {
+    setTasks((task) => [
+      ...task,
+      { text: entered, id: Math.random().toString() },
+    ]);
+  };
+
+  const deleteTask = (id) => {
+    setTasks((currentTask) => {
+      return currentTask.filter((t) => t.id !== id);
+    });
   };
 
   return (
@@ -26,7 +35,17 @@ export default function App() {
         <FlatList
           data={tasks}
           renderItem={({ item, index }) => {
-            return <TaskItems item={item} index={index} />;
+            return (
+              <TaskItems
+                text={item.text}
+                id={item.id}
+                index={index}
+                onDeleteItem={deleteTask}
+              />
+            );
+          }}
+          keyExtractor={(item, index) => {
+            return item.id;
           }}
         />
       </View>
