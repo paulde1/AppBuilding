@@ -38,35 +38,42 @@ export default function App() {
   };
 
   return (
-    <View style={styles.appContainer}>
-      <Button title='Add new task' color='crimson' onPress={changeModalView} />
-      {visibleModal && (
-        <TaskInput
-          visible={visibleModal}
-          addHandler={addHandler}
-          hideGoalHandler={hideGoalHandler}
+    <>
+      <StatusBar style='light' />
+      <View style={styles.appContainer}>
+        <Button
+          title='Add new task'
+          color='crimson'
+          onPress={changeModalView}
         />
-      )}
-      <View style={styles.items}>
-        <Text> Things I need to do ... </Text>
-        <FlatList
-          data={tasks}
-          renderItem={({ item, index }) => {
-            return (
-              <TaskItems
-                text={item.text}
-                id={item.id}
-                index={index}
-                onDeleteItem={deleteTask}
-              />
-            );
-          }}
-          keyExtractor={(item, index) => {
-            return item.id;
-          }}
-        />
+        {visibleModal && (
+          <TaskInput
+            visible={visibleModal}
+            addHandler={addHandler}
+            hideGoalHandler={hideGoalHandler}
+          />
+        )}
+        <View style={styles.items}>
+          <Text> Things I need to do ... </Text>
+          <FlatList
+            data={tasks}
+            renderItem={({ item, index }) => {
+              return (
+                <TaskItems
+                  text={item.text}
+                  id={item.id}
+                  index={index}
+                  onDeleteItem={deleteTask}
+                />
+              );
+            }}
+            keyExtractor={(item, index) => {
+              return item.id;
+            }}
+          />
+        </View>
       </View>
-    </View>
+    </>
   );
 }
 
@@ -79,5 +86,6 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: 250,
     paddingHorizontal: 10,
+    backgroundColor: "#1d6d98",
   },
 });
