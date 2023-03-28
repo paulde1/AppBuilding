@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
+import { Motion } from "@legendapp/motion";
 import {
   StyleSheet,
   Text,
