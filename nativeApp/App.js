@@ -83,7 +83,10 @@ function App() {
               }}
             />
           ) : (
-            <Motion.Text> Add things you need to do</Motion.Text>
+            <Motion.Text style={styles.text}>
+              {" "}
+              Add things you need to do
+            </Motion.Text>
           )}
         </Motion.View>
       </Motion.View>
@@ -97,8 +100,8 @@ const styles = StyleSheet.create({
   },
   appContainer: {
     flex: 1,
-    padding: 20,
-    paddingTop: 250,
+    padding: 30,
+    paddingTop: 150,
     paddingHorizontal: 10,
     backgroundColor: "#1d6d98",
     alignItems: "center",
@@ -110,6 +113,10 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#59B0F8",
+  },
+  text: {
+    color: "#efe5d5",
+    backgroundColor: "#1d6d98",
   },
 });
 
