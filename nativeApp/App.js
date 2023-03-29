@@ -99,13 +99,14 @@ function App() {
                     whileHover={{ scale: 1.2 }}
                     whileTap={{ y: 20 }}
                     transition={{ type: "spring" }}
-                  />
-                  <TaskItems
-                    text={item.text}
-                    id={item.id}
-                    index={index}
-                    onDeleteItem={deleteTask}
-                  />
+                  >
+                    <TaskItems
+                      text={item.text}
+                      id={item.id}
+                      index={index}
+                      onDeleteItem={deleteTask}
+                    />
+                  </Motion.View>
                 </>
               );
             }}
