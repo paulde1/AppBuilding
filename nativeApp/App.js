@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { Motion } from "@legendapp/motion";
+// import { Motion } from "@legendapp/motion";
 import {
   StyleSheet,
   Text,
@@ -12,7 +12,7 @@ import {
 import TaskItems from "./components/TaskItems";
 import TaskInput from "./components/TaskInput";
 
-export default function App() {
+function App() {
   const [tasks, setTasks] = useState([]);
   const [visibleModal, setVisibleModal] = useState(false);
 
@@ -90,3 +90,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#1d6d98",
   },
 });
+
+export default App;
