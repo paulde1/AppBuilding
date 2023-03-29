@@ -15,6 +15,7 @@ import TaskInput from "./components/TaskInput";
 function App() {
   const [tasks, setTasks] = useState([]);
   const [visibleModal, setVisibleModal] = useState(false);
+  const value = 0;
 
   const changeModalView = () => {
     setVisibleModal(true);
@@ -47,6 +48,17 @@ function App() {
           color='crimson'
           onPress={changeModalView}
         />
+        <Motion.Pressable>
+          <Motion.View
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ y: 20 }}
+            transition={{
+              type: "spring",
+              damping: 20,
+              stiffness: 300,
+            }}
+          />
+        </Motion.Pressable>
         {visibleModal && (
           <TaskInput
             visible={visibleModal}
@@ -54,25 +66,55 @@ function App() {
             hideGoalHandler={hideGoalHandler}
           />
         )}
-        <View style={styles.items}>
-          <Text> Things I need to do ... </Text>
-          <FlatList
+        <Motion.View
+          initial={{ y: -50 }}
+          animate={{ x: value * 100, y: 0 }}
+          whileHover={{ scale: 1.2 }}
+          whileTap={{ y: 20 }}
+          transition={{ type: "spring" }}
+        >
+          {/* <View style={styles.items}> */}
+          <Motion.Text
+            animate={{
+              color: value ? "#F81FEC" : "#59B0F8",
+              fontSize: value ? 48 : 24,
+            }}
+          >
+            {" "}
+            Things I need to do ...{" "}
+          </Motion.Text>
+          <Motion.FlatList
+            initial={{ y: -50 }}
+            animate={{ x: value * 100, y: 0 }}
+            whileHover={{ scale: 1.2 }}
+            whileTap={{ y: 20 }}
+            transition={{ type: "spring" }}
             data={tasks}
             renderItem={({ item, index }) => {
               return (
-                <TaskItems
-                  text={item.text}
-                  id={item.id}
-                  index={index}
-                  onDeleteItem={deleteTask}
-                />
+                <>
+                  <Motion.View
+                    initial={{ y: -50 }}
+                    animate={{ x: value * 100, y: 0 }}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ y: 20 }}
+                    transition={{ type: "spring" }}
+                  />
+                  <TaskItems
+                    text={item.text}
+                    id={item.id}
+                    index={index}
+                    onDeleteItem={deleteTask}
+                  />
+                </>
               );
             }}
             keyExtractor={(item, index) => {
               return item.id;
             }}
           />
-        </View>
+          {/* </View> */}
+        </Motion.View>
       </View>
     </>
   );
