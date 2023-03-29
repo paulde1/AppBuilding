@@ -93,20 +93,12 @@ function App() {
             renderItem={({ item, index }) => {
               return (
                 <>
-                  <Motion.View
-                    initial={{ y: -50 }}
-                    animate={{ x: value * 100, y: 0 }}
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ y: 20 }}
-                    transition={{ type: "spring" }}
-                  >
-                    <TaskItems
-                      text={item.text}
-                      id={item.id}
-                      index={index}
-                      onDeleteItem={deleteTask}
-                    />
-                  </Motion.View>
+                  <TaskItems
+                    text={item.text}
+                    id={item.id}
+                    index={index}
+                    onDeleteItem={deleteTask}
+                  />
                 </>
               );
             }}
@@ -114,7 +106,6 @@ function App() {
               return item.id;
             }}
           />
-          {/* </View> */}
         </Motion.View>
       </View>
     </>
