@@ -1,14 +1,8 @@
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Motion } from "@legendapp/motion";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TextInput,
-  FlatList,
-} from "react-native";
+const { Text, View, Pressable, FlatList } = Motion;
+import { StyleSheet } from "react-native";
 import TaskItems from "./components/TaskItems";
 import TaskInput from "./components/TaskInput";
 
@@ -42,14 +36,14 @@ function App() {
   return (
     <>
       <StatusBar style='light' />
-      <Motion.View style={styles.appContainer}>
-        <Motion.Pressable
+      <View style={styles.appContainer}>
+        <Pressable
           className='items-center justify-center p-4'
           animate={{ x: value * 50 }}
           onPress={changeModalView}
         >
-          <Motion.Text className='font-bold text-white'> Add Task </Motion.Text>
-        </Motion.Pressable>
+          <Text className='font-bold text-white'> Add Task </Text>
+        </Pressable>
         {visibleModal && (
           <TaskInput
             visible={visibleModal}
@@ -57,9 +51,9 @@ function App() {
             hideGoalHandler={hideGoalHandler}
           />
         )}
-        <Motion.View style={styles.view}>
+        <View style={styles.view}>
           {tasks.length ? (
-            <Motion.FlatList
+            <FlatList
               initial={{ y: -50 }}
               animate={{ x: value * 100, y: 0 }}
               whileHover={{ scale: 1.2 }}
@@ -83,13 +77,10 @@ function App() {
               }}
             />
           ) : (
-            <Motion.Text style={styles.text}>
-              {" "}
-              Add things you need to do
-            </Motion.Text>
+            <Text style={styles.text}> Add things you need to do</Text>
           )}
-        </Motion.View>
-      </Motion.View>
+        </View>
+      </View>
     </>
   );
 }
