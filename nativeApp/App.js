@@ -42,22 +42,13 @@ function App() {
   return (
     <>
       <StatusBar style='light' />
-      <View style={styles.appContainer}>
-        <Button
-          title='Add new task'
-          color='crimson'
+      <Motion.View style={styles.appContainer}>
+        <Motion.Pressable
+          className='items-center justify-center p-4'
+          animate={{ x: value * 50 }}
           onPress={changeModalView}
-        />
-        <Motion.Pressable>
-          <Motion.View
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ y: 20 }}
-            transition={{
-              type: "spring",
-              damping: 20,
-              stiffness: 300,
-            }}
-          />
+        >
+          <Motion.Text className='font-bold text-white'> Add Task </Motion.Text>
         </Motion.Pressable>
         {visibleModal && (
           <TaskInput
@@ -66,48 +57,36 @@ function App() {
             hideGoalHandler={hideGoalHandler}
           />
         )}
-        <Motion.View
-          initial={{ y: -50 }}
-          animate={{ x: value * 100, y: 0 }}
-          whileHover={{ scale: 1.2 }}
-          whileTap={{ y: 20 }}
-          transition={{ type: "spring" }}
-        >
-          {/* <View style={styles.items}> */}
-          <Motion.Text
-            animate={{
-              color: value ? "#F81FEC" : "#59B0F8",
-              fontSize: value ? 48 : 24,
-            }}
-          >
-            {" "}
-            Things I need to do ...{" "}
-          </Motion.Text>
-          <Motion.FlatList
-            initial={{ y: -50 }}
-            animate={{ x: value * 100, y: 0 }}
-            whileHover={{ scale: 1.2 }}
-            whileTap={{ y: 20 }}
-            transition={{ type: "spring" }}
-            data={tasks}
-            renderItem={({ item, index }) => {
-              return (
-                <>
-                  <TaskItems
-                    text={item.text}
-                    id={item.id}
-                    index={index}
-                    onDeleteItem={deleteTask}
-                  />
-                </>
-              );
-            }}
-            keyExtractor={(item, index) => {
-              return item.id;
-            }}
-          />
+        <Motion.View style={styles.view}>
+          {tasks.length ? (
+            <Motion.FlatList
+              initial={{ y: -50 }}
+              animate={{ x: value * 100, y: 0 }}
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ y: 20 }}
+              transition={{ type: "spring" }}
+              data={tasks}
+              renderItem={({ item, index }) => {
+                return (
+                  <>
+                    <TaskItems
+                      text={item.text}
+                      id={item.id}
+                      index={index}
+                      onDeleteItem={deleteTask}
+                    />
+                  </>
+                );
+              }}
+              keyExtractor={(item, index) => {
+                return item.id;
+              }}
+            />
+          ) : (
+            <Motion.Text> Add things you need to do</Motion.Text>
+          )}
         </Motion.View>
-      </View>
+      </Motion.View>
     </>
   );
 }
@@ -122,6 +101,15 @@ const styles = StyleSheet.create({
     paddingTop: 250,
     paddingHorizontal: 10,
     backgroundColor: "#1d6d98",
+    alignItems: "center",
+  },
+  view: {
+    backgroundColor: "#ebd5b3",
+    marginBottom: 70,
+    width: "100%",
+  },
+  button: {
+    backgroundColor: "#59B0F8",
   },
 });
 
