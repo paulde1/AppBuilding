@@ -41,6 +41,7 @@ function App() {
           className='items-center justify-center p-4'
           animate={{ x: value * 50 }}
           onPress={changeModalView}
+          style={styles.button}
         >
           <Text className='font-bold text-white'> Add Task </Text>
         </Pressable>
@@ -104,10 +105,15 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#59B0F8",
+    width: "70%",
+    height: "5%",
+    alignItems: "center",
+    textAlign: "center",
   },
   text: {
     color: "#efe5d5",
     backgroundColor: "#1d6d98",
+    margin: "10",
   },
 });
 
