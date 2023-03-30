@@ -43,7 +43,7 @@ function App() {
           onPress={changeModalView}
           style={styles.button}
         >
-          <Text className='font-bold text-white'> Add Task </Text>
+          <Text style={styles.buttonText}> Add Task </Text>
         </Pressable>
         {visibleModal && (
           <TaskInput
@@ -78,7 +78,7 @@ function App() {
               }}
             />
           ) : (
-            <Text style={styles.text}> Add things you need to do</Text>
+            <Text style={styles.listText}> Add things you need to do</Text>
           )}
         </View>
       </View>
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     backgroundColor: "#1d6d98",
     alignItems: "center",
+    color: "#efe5d5",
   },
   view: {
     backgroundColor: "#ebd5b3",
@@ -104,16 +105,18 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   button: {
-    backgroundColor: "#59B0F8",
+    backgroundColor: "#b43757",
     width: "70%",
-    height: "5%",
+    padding: 10,
     alignItems: "center",
     textAlign: "center",
   },
-  text: {
+  listText: {
     color: "#efe5d5",
     backgroundColor: "#1d6d98",
-    margin: "10",
+  },
+  buttonText: {
+    color: "#efe5d5",
   },
 });
 
