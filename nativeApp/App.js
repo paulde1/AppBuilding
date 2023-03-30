@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { Motion } from "@legendapp/motion";
-const { Text, View, Pressable, FlatList } = Motion;
 import { StyleSheet } from "react-native";
 import TaskItems from "./components/TaskItems";
 import TaskInput from "./components/TaskInput";
+
+const { Text, View, Pressable, FlatList, Image, ScrollView, SectionList } =
+  Motion;
 
 function App() {
   const [tasks, setTasks] = useState([]);
