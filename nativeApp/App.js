@@ -80,7 +80,10 @@ function App() {
               }}
             />
           ) : (
-            <Text style={styles.listText}> Add things you need to do</Text>
+            <Text style={styles.listText}>
+              {" "}
+              Hint: Press "Add Task" and start getting things done...
+            </Text>
           )}
         </View>
       </View>
@@ -116,9 +119,13 @@ const styles = StyleSheet.create({
   listText: {
     color: "#efe5d5",
     backgroundColor: "#1d6d98",
+    textAlign: "center",
+    paddingTop: 10,
+    fontSize: 16,
   },
   buttonText: {
     color: "#efe5d5",
+    fontSize: 20,
   },
 });
 
