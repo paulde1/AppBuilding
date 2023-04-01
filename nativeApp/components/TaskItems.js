@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Pressable } from "react-native";
 
 const TaskItems = ({ text, index, id, onDeleteItem }) => {
   return (
-    <View style={styles.item}>
+    <View transition={{ ease: "easeOut", duration: 2 }} style={styles.item}>
       <Pressable
         android_ripple={{ color: "green" }}
         onPress={onDeleteItem.bind(this, id)}

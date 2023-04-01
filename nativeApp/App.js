@@ -39,12 +39,7 @@ function App() {
     <>
       <StatusBar style='light' />
       <View style={styles.appContainer}>
-        <Pressable
-          className='items-center justify-center p-4'
-          animate={{ x: value * 50 }}
-          onPress={changeModalView}
-          style={styles.button}
-        >
+        <Pressable onPress={changeModalView} style={styles.button}>
           <Text style={styles.buttonText}> Add Task </Text>
         </Pressable>
         {visibleModal && (
@@ -54,6 +49,7 @@ function App() {
             hideGoalHandler={hideGoalHandler}
           />
         )}
+        <View style={styles.spacing}></View>
         <View style={styles.view}>
           {tasks.length ? (
             <FlatList
@@ -98,8 +94,8 @@ const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
     padding: 30,
-    paddingTop: 150,
-    paddingHorizontal: 10,
+    paddingTop: 140,
+    paddingHorizontal: 12,
     backgroundColor: "#1d6d98",
     alignItems: "center",
     color: "#efe5d5",
@@ -108,6 +104,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#ebd5b3",
     marginBottom: 70,
     width: "100%",
+  },
+  spacing: {
+    paddingTop: 20,
   },
   button: {
     backgroundColor: "#b43757",
@@ -120,7 +119,7 @@ const styles = StyleSheet.create({
     color: "#efe5d5",
     backgroundColor: "#1d6d98",
     textAlign: "center",
-    paddingTop: 10,
+    paddingTop: 6,
     fontSize: 16,
   },
   buttonText: {
