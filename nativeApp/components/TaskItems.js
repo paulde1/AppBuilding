@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     margin: 7,
     borderRadius: 5,
     padding: 7,
-    backgroundColor: "lightgrey",
     color: "red",
   },
   pressedTask: {
