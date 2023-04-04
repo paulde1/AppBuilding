@@ -1,5 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet } from "react-native";
+import { Motion } from "@legendapp/motion";
+
+const { Text, View, Pressable, FlatList, Image, ScrollView, SectionList } =
+  Motion;
 
 const TaskItems = ({ text, index, id, onDeleteItem }) => {
   return (
