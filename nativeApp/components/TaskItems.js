@@ -7,7 +7,15 @@ const { Text, View, Pressable, FlatList, Image, ScrollView, SectionList } =
 
 const TaskItems = ({ text, index, id, onDeleteItem }) => {
   return (
-    <View transition={{ ease: "easeOut", duration: 2 }} style={styles.item}>
+    <View
+      initial={{ y: -50 }}
+      animate={{ x: value * 100, y: 0 }}
+      whileHover={{ scale: 1.2 }}
+      whileTap={{ y: 20 }}
+      transition={{ type: "spring" }}
+      transition={{ ease: "easeOut", duration: 2 }}
+      style={styles.item}
+    >
       <Pressable
         android_ripple={{ color: "green" }}
         onPress={onDeleteItem.bind(this, id)}

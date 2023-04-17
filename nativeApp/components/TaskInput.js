@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { StyleSheet, Modal } from "react-native";
 import { Motion } from "@legendapp/motion";
-const { View, Button, TextInput, Image } = Motion;
-
+// const { View, Button, TextInput, Image } = Motion;
+import { View, Button, TextInput, Image } from "react-native";
 const TaskInput = ({ addHandler, visible, hideGoalHandler }) => {
   const [text, setText] = useState("");
 
