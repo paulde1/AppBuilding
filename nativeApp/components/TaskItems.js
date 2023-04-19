@@ -9,10 +9,8 @@ const TaskItems = ({ text, index, id, onDeleteItem }) => {
   return (
     <View
       initial={{ y: -50 }}
-      animate={{ x: value * 100, y: 0 }}
       whileHover={{ scale: 1.2 }}
       whileTap={{ y: 20 }}
-      transition={{ type: "spring" }}
       transition={{ ease: "easeOut", duration: 2 }}
       style={styles.item}
     >

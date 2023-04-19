@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { Motion } from "@legendapp/motion";
-import { StyleSheet } from "react-native";
+import { Motion, spring } from "@legendapp/motion";
+import { StyleSheet, View } from "react-native";
 import TaskItems from "./components/TaskItems";
 import TaskInput from "./components/TaskInput";
 
-const { Text, View, Pressable, FlatList, Image, ScrollView, SectionList } =
-  Motion;
+const { Text, Pressable, FlatList, Image, ScrollView, SectionList } = Motion;
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -50,38 +49,48 @@ function App() {
           />
         )}
         <View style={styles.spacing}></View>
-        <View style={styles.view}>
-          {tasks.length ? (
-            <FlatList
-              initial={{ y: -50 }}
-              animate={{ x: value * 100, y: 0 }}
-              whileHover={{ scale: 1.2 }}
-              whileTap={{ y: 20 }}
-              transition={{ type: "spring" }}
-              data={tasks}
-              renderItem={({ item, index }) => {
-                return (
-                  <>
-                    <TaskItems
-                      text={item.text}
-                      id={item.id}
-                      index={index}
-                      onDeleteItem={deleteTask}
-                    />
-                  </>
-                );
-              }}
-              keyExtractor={(item, index) => {
-                return item.id;
-              }}
-            />
-          ) : (
-            <Text style={styles.listText}>
-              {" "}
-              Hint: Press "Add Task" and start getting things done...
-            </Text>
-          )}
-        </View>
+        <Motion
+          style={{
+            /* `opacity: spring(1)` and `translateY: spring(0, { stiffness: 200, damping: 20 })` are using
+         the `spring` function from the `@legendapp/motion` library to animate the opacity and
+         vertical position of a view. */
+            opacity: spring(1),
+            translateY: spring(0, { stiffness: 200, damping: 20 }),
+          }}
+        >
+          <View style={styles.view}>
+            {tasks.length ? (
+              <FlatList
+                initial={{ y: -50 }}
+                animate={{ x: value * 100, y: 0 }}
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ y: 20 }}
+                transition={{ type: "spring" }}
+                data={tasks}
+                renderItem={({ item, index }) => {
+                  return (
+                    <>
+                      <TaskItems
+                        text={item.text}
+                        id={item.id}
+                        index={index}
+                        onDeleteItem={deleteTask}
+                      />
+                    </>
+                  );
+                }}
+                keyExtractor={(item) => {
+                  return item.id;
+                }}
+              />
+            ) : (
+              <Text style={styles.listText}>
+                {" "}
+                Hint: Press "Add Task" and start getting things done...
+              </Text>
+            )}
+          </View>
+        </Motion>
       </View>
     </>
   );
